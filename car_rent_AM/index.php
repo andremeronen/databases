@@ -140,8 +140,8 @@ while($rida = mysqli_fetch_row($valjund)){
     <p class="card-text text-secondary "><?php  echo($rida[2]. "<br>");  ?>  </p>
     <p class="card-text ">
         Mootor:  <?php  echo($rida[3]. "<br>");  ?>   <br>
-        Kütus:  <?php  echo($rida[4]. "<br>");  ?>  
-        Hind:  <?php  echo($rida[5]. "<br>");  ?>  
+        Kütus:  <?php  echo($rida[7]. "<br>");  ?>  
+        Hind:  <?php  echo($rida[8]. "<br>");  ?>  
     <a href="auto.php?id=<?php echo $rida[0]; ?>" class="btn btn-primary">Rendi</a>
   </div>
 </div>
@@ -153,7 +153,6 @@ while($rida = mysqli_fetch_row($valjund)){
 <div class="row">
 
 
-<!-- leheküljenumbrid -->
     <nav>
       <ul class="pagination p-4 justify-content-center">
         <li class="page-item disabled"> <span class="page-link link-dark border-secondary">Eelmine</span> </li>

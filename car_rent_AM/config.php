@@ -1,16 +1,12 @@
 <?php
-    $db_server = 'localhost';
-    $db_andmebaas = 'car_rent';
-    $db_kasutaja = 'ameronen';
-    $db_salasona = 'ameronen';
+$db_server = "localhost";
+$db_kasutaja = "root";
+$db_salasona = "";
+$db_andmebaas = "autolaenutus";
 
+$yhendus = mysqli_connect($db_server, $db_kasutaja, $db_salasona, $db_andmebaas);
 
-    $yhendus = mysqli_connect($db_server, $db_kasutaja, $db_salasona, $db_andmebaas);
-
-
-    if (!$yhendus) {
-        die('Ei saa ühendust andmebaasiga');
-    }
+if (!$yhendus) {
+    die("Ei saa ühendust andmebaasiga: " . mysqli_connect_error());
+}
 ?>
-
-

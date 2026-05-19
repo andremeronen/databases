@@ -1,6 +1,6 @@
 <?php
     $db_server = 'localhost';
-    $db_andmebaas = 'car_rent';
+    $db_andmebaas = 'autolaenutus';
     $db_kasutaja = 'ameronen';
     $db_salasona = 'ameronen';
 
