@@ -11,7 +11,32 @@ $id = $_GET["id"];
 $paring = "SELECT * FROM cars WHERE id = $id";
 $tulemus = mysqli_query($yhendus, $paring);
 $auto = mysqli_fetch_assoc($tulemus);
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $start_date = $_POST["start_date"] ?? "";
+    $end_date   = $_POST["end_date"] ?? "";
+
+    if ($start_date && $end_date) {
+
+        $start = new DateTime($start_date);
+        $end   = new DateTime($end_date);
+
+        if ($start > $end) {
+            $message = "<div class='alert alert-danger'>Kuupäevad on valed.</div>";
+        } else {
+
+            $days = $start->diff($end)->days + 1;
+            $total = $days * $auto["price"];
+
+            $user_id = $_SESSION["user_id"] ?? 1;
+        }
+    }
+}
 ?>
+
+
+
 
 <!doctype html>
 <html lang="en">
@@ -33,10 +58,10 @@ $auto = mysqli_fetch_assoc($tulemus);
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Avaleht</a>
+          <a class="nav-link active" aria-current="page" href="index.php">Avaleht</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Autod</a>
+          <a class="nav-link" href="index.php">Autod</a>
         </li>
          <li class="nav-item">
           <a class="nav-link active" aria-disabled="true">Hinnad</a>
@@ -81,7 +106,22 @@ $auto = mysqli_fetch_assoc($tulemus);
 <h3 class="mt-4"><?php echo $auto["price"]; ?> € / päev</h3>
 
 <?php if(isset($_SESSION["username"])): ?>
-    <a href="rentimine.php?id=<?php echo $auto["id"]; ?>" class="btn btn-success mt-3 w-100">Rendi auto</a>
+
+      <form method="POST" class="border p-3 rounded bg-light">
+                <div class="mb-2">
+                    <label>Algus</label>
+                    <input type="date" name="start_date" class="form-control" required>
+                </div>
+     <div class="mb-2">
+                    <label>Lõpp</label>
+                    <input type="date" name="end_date" class="form-control" required>
+                </div>
+
+                <button class="btn btn-success w-100 mt-2">Broneeri</button>
+            </form>
+
+            <a href="index.php" class="btn btn-secondary mt-2">Tagasi</a>
+        </div>
 <?php else: ?>
     <a href="login.php" class="btn btn-dark mt-3 w-100">Rentimiseks logi sisse</a>
 <?php endif; ?>

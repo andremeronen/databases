@@ -13,8 +13,6 @@ if (isset($_GET['logout'])) {
 
 include("config.php");
 
-/* kustutamine */
-
 if(isset($_GET['id'])){
     $id = $_GET['id'];
 
@@ -25,7 +23,6 @@ if(isset($_GET['id'])){
     exit();
 }
 
-/* autode päring */
 
 $paring = "SELECT * FROM cars";
 $tulemus = mysqli_query($yhendus, $paring);
@@ -81,14 +78,14 @@ $tulemus = mysqli_query($yhendus, $paring);
 </div>
 
 <div class="col-md-6 text-end">
-<a href="add_car.php" class="btn btn-dark">
+<a href="add.php" class="btn btn-dark">
 Lisa auto
 </a>
 </div>
 
 </div>
 
-<!-- autode tabel -->
+<!-- autod -->
 
 <table class="table table-striped table-hover align-middle">
 
