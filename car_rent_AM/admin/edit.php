@@ -1,17 +1,14 @@
 <?php
 include("config.php");
 
-/* id URList */
 
 $id = $_GET['id'];
 
-/* auto päring */
 
 $paring = "SELECT * FROM cars WHERE id=$id";
 $tulemus = mysqli_query($yhendus, $paring);
 $auto = mysqli_fetch_assoc($tulemus);
 
-/* vormi salvestamine */
 
 if(isset($_POST["save"])){
 
