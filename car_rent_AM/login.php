@@ -24,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Andmebaasi kasutaja kontroll
     $stmt = $yhendus->prepare("SELECT password FROM kasutajad WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
