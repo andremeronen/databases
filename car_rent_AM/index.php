@@ -96,7 +96,6 @@ if (isset ($_GET['search'])){
 $paring .= " LIMIT 8";
 $valjund = mysqli_query($yhendus, $paring);
 
-// var_dump($valjund);
 
 ?>
 
