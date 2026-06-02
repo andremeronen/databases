@@ -85,7 +85,6 @@ Lisa auto
 
 </div>
 
-<!-- autod -->
 
 <table class="table table-striped table-hover align-middle">
 
